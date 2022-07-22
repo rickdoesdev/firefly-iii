@@ -40,6 +40,11 @@
                         </div>
                     </td>
                     <td>
+                        {% if piggy.start_date and 0 == piggy.in_progress %}
+                            <span class="fa fa-fw fa-calendar"></span>
+                        {% else %}
+                            <span class="fa fa-fw fa-star-o"></span>
+                        {% endif %}
                         <a href="{{ route('piggy-banks.show', piggy.id) }}" title="{{ piggy.account_name }}">{{ piggy.name }}</a>
                         {% if piggy.attachments.count() > 0 %}
                             <span class="fa fa-fw fa-paperclip"></span>

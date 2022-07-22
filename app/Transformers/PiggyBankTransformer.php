@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace FireflyIII\Transformers;
 
+use Carbon\Carbon;
 use FireflyIII\Models\ObjectGroup;
 use FireflyIII\Models\PiggyBank;
 use FireflyIII\Repositories\Account\AccountRepositoryInterface;
@@ -106,7 +107,7 @@ class PiggyBankTransformer extends AbstractTransformer
         }
         $startDate  = $piggyBank->startdate?->toAtomString();
         $targetDate = $piggyBank->targetdate?->toAtomString();
-
+        $inProgress = null === $piggyBank->startdate || $piggyBank->startdate?->lte(Carbon::now());
 
         return [
             'id'                      => (string) $piggyBank->id,
@@ -126,6 +127,7 @@ class PiggyBankTransformer extends AbstractTransformer
             'save_per_month'          => $savePerMonth,
             'start_date'              => $startDate,
             'target_date'             => $targetDate,
+            'in_progress'             => $inProgress,
             'order'                   => (int) $piggyBank->order,
             'active'                  => true,
             'notes'                   => $notes,

@@ -1862,6 +1862,7 @@ return [
     'add'                                       => 'Add',
     'no_money_for_piggy'                        => 'You have no money to put in this piggy bank.',
     'suggested_savings_per_month'               => 'Suggested per month',
+    'in_progress'                               => 'In Progress',
 
     'remove'                    => 'Remove',
     'max_amount_add'            => 'The maximum amount you can add is',
